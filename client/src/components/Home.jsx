@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 const Home = () => {
@@ -11,6 +11,7 @@ const Home = () => {
     try {
       let data = await axios.get("http://localhost:3001/iecho?text=" + input);
       totalTexts.push(data.data);
+      console.log(data.data);
       setInput("");
     } catch (error) {
       console.log(error);
@@ -27,6 +28,11 @@ const Home = () => {
     normal: "text-danger",
   };
 
+
+  const buttonSubmit = useMemo(()=>{
+    if(input.length === 0 ||  !isNaN(input))return true;
+    return false
+ },[input])
   
 
   return (
@@ -46,6 +52,7 @@ const Home = () => {
           <div className="col-auto">
             <button
               type="submit"
+              disabled={buttonSubmit}
               onClick={handleInputChange}
               className="btn btn-primary mb-3 "
             >
@@ -63,11 +70,12 @@ const Home = () => {
             <div className="card-body border-2">
               <h2 className="card-title">Results:</h2>
               <div className="container-fluid">
+              {isNaN(input) === false && input.length > 0 ? <h3 className="text-center text-danger">Entering numbers is not allowed</h3> : null}
                 <div className="container">
                   {totalTexts
-                    .map((text) => {
+                    .map((text, i) => {
                       return (
-                        <div>
+                        <div key={i}>
                           <div
                             className={
                               text.palindromo === true ? colors.ok : colors.not

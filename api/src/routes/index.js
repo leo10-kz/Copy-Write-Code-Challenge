@@ -1,9 +1,10 @@
 const { Router } = require('express');
 const router = Router();
+const cors = require('cors')
 
 
 
-router.get('/iecho', (req, res, next) => {
+router.get('/iecho',cors(), (req, res, next) => {
    const text = req.query.text
    let flag = isNaN(text)
    

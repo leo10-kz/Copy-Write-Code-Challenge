@@ -5,7 +5,7 @@ dotenv.config();
 const port = process.env.PORT
 
 server.listen(port, () => {
-    console.log(`[SERVER on] : http://localhost:${port}/api`)
+    console.log(`[SERVER on] : http://localhost:${port}`)
   })
   
   //* En cason de error

@@ -9,7 +9,7 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      let data = await axios.get("http://localhost:3001/iecho?text=" + input);
+      let data = await axios.get("/iecho?text=" + input);
       totalTexts.push(data.data);
       console.log(data.data);
       setInput("");
@@ -41,8 +41,8 @@ const Home = () => {
         <div className="row g-2 align-items-center m-auto">
           <div className="col-auto">
             <input
-              type="text"
-              className="form-control mb-3"
+              type="search"
+              className="form-control mb-3 me-3"
               placeholder="Insert Text"
               aria-label="Insert Text"
               value={input}
@@ -54,9 +54,9 @@ const Home = () => {
               type="submit"
               disabled={buttonSubmit}
               onClick={handleInputChange}
-              className="btn btn-primary mb-3 "
+              className="btn-send btn btn-primary mb-3 "
             >
-              Search
+              Send
             </button>
           </div>
         </div>

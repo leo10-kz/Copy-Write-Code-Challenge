@@ -1,6 +1,9 @@
 {
   "name": "api-challenge",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.22.12"
+  },
   "description": "api rest",
   "main": "index.js",
   "scripts": {

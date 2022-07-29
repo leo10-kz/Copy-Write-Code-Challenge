@@ -1,6 +1,9 @@
 {
   "name": "api-front-end",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.22.12"
+  },
   "description": "Aplicacion front React",
   "main": "index.js",
   "scripts": {
